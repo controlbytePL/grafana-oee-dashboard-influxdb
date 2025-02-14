@@ -18,9 +18,70 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 2,
+  "id": 5,
   "links": [],
   "panels": [
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "eecqp5jgr5k3ke"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 3,
+      "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
+      },
+      "pluginVersion": "11.5.1",
+      "targets": [
+        {
+          "query": "SELECT mean(\"numeric_value\") \nFROM \"pump_status\" \nWHERE $timeFilter \nGROUP BY time($__interval) \nfill(null)",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series"
+        }
+      ],
+      "title": "Panel Title",
+      "type": "gauge"
+    },
     {
       "datasource": {
         "type": "influxdb",
@@ -85,7 +146,7 @@
         "h": 8,
         "w": 8,
         "x": 0,
-        "y": 0
+        "y": 8
       },
       "id": 1,
       "options": {
@@ -182,7 +243,7 @@
         "h": 10,
         "w": 8,
         "x": 0,
-        "y": 8
+        "y": 16
       },
       "id": 2,
       "options": {
@@ -214,7 +275,7 @@
     }
   ],
   "preload": false,
-  "refresh": "",
+  "refresh": "5s",
   "schemaVersion": 40,
   "tags": [],
   "templating": {
@@ -226,8 +287,8 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "MQTT Pump Status",
-  "uid": "mqtt_pump_dashboard",
+  "title": "MQTT Pump Status1",
+  "uid": "mqtt_pump_dashboard1",
   "version": 1,
   "weekStart": ""
-} 
+}
