@@ -28,8 +28,8 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 9,
-        "w": 24,
+        "h": 12,
+        "w": 5,
         "x": 0,
         "y": 0
       },
@@ -86,85 +86,9 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 5,
-        "x": 0,
-        "y": 9
-      },
-      "id": 1,
-      "options": {
-        "minVizHeight": 75,
-        "minVizWidth": 75,
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showThresholdLabels": false,
-        "showThresholdMarkers": true,
-        "sizing": "auto"
-      },
-      "pluginVersion": "11.5.1",
-      "targets": [
-        {
-          "datasource": {
-            "type": "influxdb",
-            "uid": "eecqp5jgr5k3ke"
-          },
-          "query": "SELECT mean(\"oee\") AS \"OEE\"\nFROM \"oee_data\"\nWHERE $timeFilter\nGROUP BY time($__interval) fill(previous);",
-          "rawQuery": true,
-          "refId": "A",
-          "resultFormat": "time_series"
-        }
-      ],
-      "title": "OEE",
-      "transparent": true,
-      "type": "gauge"
-    },
-    {
-      "datasource": {
-        "type": "influxdb",
-        "uid": "eecqp5jgr5k3ke"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "max": 100,
-          "min": 0,
-          "thresholds": {
-            "mode": "percentage",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 0
-              },
-              {
-                "color": "#EAB839",
-                "value": 50
-              },
-              {
-                "color": "green",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 6,
-        "w": 5,
-        "x": 6,
-        "y": 9
+        "w": 4,
+        "x": 5,
+        "y": 0
       },
       "id": 2,
       "options": {
@@ -238,9 +162,9 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 5,
-        "x": 12,
-        "y": 9
+        "w": 4,
+        "x": 10,
+        "y": 0
       },
       "id": 3,
       "options": {
@@ -314,9 +238,9 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 5,
-        "x": 18,
-        "y": 9
+        "w": 4,
+        "x": 15,
+        "y": 0
       },
       "id": 4,
       "options": {
@@ -348,6 +272,82 @@
         }
       ],
       "title": "Availability",
+      "transparent": true,
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "eecqp5jgr5k3ke"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 0
+              },
+              {
+                "color": "#EAB839",
+                "value": 50
+              },
+              {
+                "color": "green",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 5,
+        "x": 19,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
+      },
+      "pluginVersion": "11.5.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "eecqp5jgr5k3ke"
+          },
+          "query": "SELECT mean(\"oee\") AS \"OEE\"\nFROM \"oee_data\"\nWHERE $timeFilter\nGROUP BY time($__interval) fill(previous);",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series"
+        }
+      ],
+      "title": "OEE",
       "transparent": true,
       "type": "gauge"
     },
@@ -393,10 +393,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 9,
-        "w": 24,
-        "x": 0,
-        "y": 15
+        "h": 6,
+        "w": 19,
+        "x": 5,
+        "y": 6
       },
       "id": 7,
       "options": {
@@ -487,7 +487,7 @@
         "h": 4,
         "w": 24,
         "x": 0,
-        "y": 24
+        "y": 12
       },
       "id": 5,
       "options": {
@@ -510,7 +510,7 @@
       "pluginVersion": "11.5.1",
       "targets": [
         {
-          "query": "SELECT (\"machineState\") AS \"Machine State\"\nFROM \"oee_data\"\nWHERE $timeFilter",
+          "query": "SELECT \"machineState\" AS \"Machine State\"\nFROM \"oee_data\"\nWHERE $timeFilter\nORDER BY time DESC",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series"
@@ -579,7 +579,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 28
+        "y": 16
       },
       "id": 6,
       "options": {
@@ -609,20 +609,20 @@
     }
   ],
   "preload": false,
-  "refresh": "5s",
+  "refresh": "1m",
   "schemaVersion": 40,
   "tags": [],
   "templating": {
     "list": []
   },
   "time": {
-    "from": "now-3h",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "browser",
   "title": "MQTT Codesys OEE Data",
   "uid": "fedcfl1hba3nkd",
-  "version": 9,
+  "version": 10,
   "weekStart": ""
 }
