@@ -22,29 +22,28 @@
   "links": [],
   "panels": [
     {
-      "description": "",
       "fieldConfig": {
         "defaults": {},
         "overrides": []
       },
       "gridPos": {
-        "h": 12,
+        "h": 7,
         "w": 5,
         "x": 0,
         "y": 0
       },
-      "id": 8,
+      "id": 9,
       "options": {
         "code": {
           "language": "plaintext",
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "<h2>🏭 Industrial Machine Status</h2>\n<p><strong>Machine Type:</strong> Automated Production Line</p>\n\n<p><strong>Key Metrics:</strong></p>\n<ul>\n  <li>📊 OEE (Overall Equipment Effectiveness)</li>\n  <li>⚙️ Machine State (Running/Stopped)</li>\n  <li>📦 Production Quality (Good vs. Bad Parts)</li>\n  <li>⚖️ Product Weight</li>\n</ul>\n<p><strong>Data Updates:</strong> Real-Time (Every 5 seconds)</p>\n<p>Find out more on <a href=\"https://controlbyte.tech/\">ControlByte website</a>.</p>",
+        "content": "<img src=\"https://kursy.controlbyte.pl/wp-content/uploads/2025/02/2025-02-18_07h05_43-8k9t8y8.png\"/>",
         "mode": "html"
       },
       "pluginVersion": "11.5.1",
-      "title": "MQTT Data form an industrial machine",
+      "title": "Packaging machine",
       "type": "text"
     },
     {
@@ -86,11 +85,11 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 4,
+        "w": 5,
         "x": 5,
         "y": 0
       },
-      "id": 2,
+      "id": 1,
       "options": {
         "minVizHeight": 75,
         "minVizWidth": 75,
@@ -113,13 +112,13 @@
             "type": "influxdb",
             "uid": "eecqp5jgr5k3ke"
           },
-          "query": "SELECT mean(\"performance\") AS \"Performance\"\nFROM \"oee_data\"\nWHERE $timeFilter\nGROUP BY time($__interval) fill(previous);",
+          "query": "SELECT mean(\"oee\") AS \"OEE\"\nFROM \"oee_data\"\nWHERE $timeFilter\nGROUP BY time($__interval) fill(previous);",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series"
         }
       ],
-      "title": "Performance",
+      "title": "OEE",
       "transparent": true,
       "type": "gauge"
     },
@@ -314,11 +313,11 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 5,
-        "x": 19,
+        "w": 4,
+        "x": 20,
         "y": 0
       },
-      "id": 1,
+      "id": 2,
       "options": {
         "minVizHeight": 75,
         "minVizWidth": 75,
@@ -341,13 +340,13 @@
             "type": "influxdb",
             "uid": "eecqp5jgr5k3ke"
           },
-          "query": "SELECT mean(\"oee\") AS \"OEE\"\nFROM \"oee_data\"\nWHERE $timeFilter\nGROUP BY time($__interval) fill(previous);",
+          "query": "SELECT mean(\"performance\") AS \"Performance\"\nFROM \"oee_data\"\nWHERE $timeFilter\nGROUP BY time($__interval) fill(previous);",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series"
         }
       ],
-      "title": "OEE",
+      "title": "Performance",
       "transparent": true,
       "type": "gauge"
     },
@@ -393,7 +392,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
+        "h": 7,
         "w": 19,
         "x": 5,
         "y": 6
@@ -423,6 +422,32 @@
       ],
       "title": "Product Weight",
       "type": "histogram"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 5,
+        "x": 0,
+        "y": 7
+      },
+      "id": 8,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<h2>🏭 Industrial Machine </h2>\n<p><strong>Machine Type:</strong> Automated Production Line</p>\n\n<p><strong>Key Metrics:</strong></p>\n<ul>\n  <li>📊 OEE (Overall Equipment Effectiveness)</li>\n  <li>⚙️ Machine State (Running/Stopped)</li>\n  <li>📦 Production Quality (Good vs. Bad Parts)</li>\n  <li>⚖️ Product Weight</li>\n</ul>\n\n<p>Find out more on <a href=\"https://controlbyte.tech/\" target=\"_blank\">ControlByte website</a>.</p>",
+        "mode": "html"
+      },
+      "pluginVersion": "11.5.1",
+      "title": "MQTT Data from an industrial machine",
+      "type": "text"
     },
     {
       "datasource": {
@@ -484,10 +509,10 @@
         ]
       },
       "gridPos": {
-        "h": 4,
-        "w": 24,
-        "x": 0,
-        "y": 12
+        "h": 5,
+        "w": 19,
+        "x": 5,
+        "y": 13
       },
       "id": 5,
       "options": {
@@ -579,7 +604,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 16
+        "y": 18
       },
       "id": 6,
       "options": {
@@ -623,6 +648,6 @@
   "timezone": "browser",
   "title": "MQTT Codesys OEE Data",
   "uid": "fedcfl1hba3nkd",
-  "version": 10,
+  "version": 11,
   "weekStart": ""
 }
