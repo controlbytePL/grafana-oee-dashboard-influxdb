@@ -11,6 +11,9 @@ This project provides a Grafana dashboard titled **"MQTT Codesys OEE Data"**, de
 - **Machine State:** Indicates real-time machine status (Running/Stopped).
 - **Product Weight:** Displays variations in product weight over time.
 
+## Dashboard Preview
+![Dashboard Preview](image.png)
+
 ## Data Source
 - **Database:** InfluxDB (Time-series database)
 - **Data Input:** Collected from a Codesys PLC using MQTT and stored in InfluxDB.
@@ -39,9 +42,6 @@ This project provides a Grafana dashboard titled **"MQTT Codesys OEE Data"**, de
 - The dashboard updates automatically every minute.
 - Threshold colors are configured based on standard KPIs.
 - Data grouping uses the `time($__interval)` setting from Grafana.
-
-## Example
-![Dashboard Preview](https://kursy.controlbyte.pl/wp-content/uploads/2025/02/2025-02-18_07h05_43-8k9t8y8.png)
 
 ## License
 This project is licensed under the MIT License.
