@@ -17,12 +17,12 @@ This project demonstrates how to integrate the CODESYS development environment w
 ### 1. CODESYS
 
 - **MQTT Configuration**: Set up the MQTT client in CODESYS to publish data to a specified topic.
-- **Sample Code**: Available in current repository
+- **Sample Code**: Available in the current repository.
 
 ### 2. Node-RED
 
 - **Installation**: Follow the [official getting started guide](https://nodered.org/docs/getting-started/).
-- **Importing Flows**: Import the flow from the `flows.json` file available in the repository.
+- **Importing Flows**: Import the flow from the `flows.json` file available in the repository [MQTT-INFLUXDB-CODESYS-GRAFANA](https://github.com/controlbytePL/MQTT-INFLUXDB-CODESYS-GRAFANA).
 - **MQTT Configuration**: Configure the MQTT node to subscribe to the topic used by CODESYS.
 - **Data Processing**: Add nodes to parse JSON data and store it in InfluxDB.
 
