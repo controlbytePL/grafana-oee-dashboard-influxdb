@@ -1,58 +1,48 @@
-# Project: Integrating CODESYS with Node-RED, InfluxDB, and Grafana via MQTT
+# Grafana Dashboard for MQTT Codesys OEE Data
 
 ## Description
+This project provides a Grafana dashboard titled **"MQTT Codesys OEE Data"**, designed to visualize key performance indicators (KPIs) of industrial machines. The dashboard connects to an **InfluxDB** database to retrieve and display essential metrics gathered via **MQTT** from a Codesys PLC.
 
-This project demonstrates how to integrate the CODESYS development environment with Node-RED, InfluxDB, and Grafana using the MQTT protocol. The objective is to transmit data from CODESYS to Node-RED, where it is processed and stored in an InfluxDB database, and subsequently visualized using Grafana.
+## Key Features
+- **OEE (Overall Equipment Effectiveness):** Displays the overall efficiency of the equipment.
+- **Quality:** Monitors the percentage of high-quality produced items.
+- **Availability:** Tracks machine uptime and availability.
+- **Performance:** Measures production speed relative to targets.
+- **Machine State:** Indicates real-time machine status (Running/Stopped).
+- **Product Weight:** Displays variations in product weight over time.
 
-## Requirements
+## Data Source
+- **Database:** InfluxDB (Time-series database)
+- **Data Input:** Collected from a Codesys PLC using MQTT and stored in InfluxDB.
+- **Query Language:** InfluxQL
 
-- **CODESYS**: A development environment for PLCs.
-- **Node-RED**: A flow-based development tool for visual programming. [Official Documentation](https://nodered.org/docs/)
-- **InfluxDB**: A time-series database. [Official Documentation](https://docs.influxdata.com/influxdb/latest/)
-- **Grafana**: A data visualization platform. [Official Documentation](https://grafana.com/docs/)
-- **MQTT Broker**: e.g., Mosquitto.
+## Prerequisites
+- **Grafana 11.5.1 or later**
+- **InfluxDB (v1.8 or later)**
+- **MQTT Broker (e.g., Mosquitto)**
+- **Codesys PLC configured to publish OEE metrics via MQTT**
 
-## Installation and Configuration
+## Installation and Setup
+1. **Import the Dashboard:** In Grafana, navigate to `Create > Import` and upload the provided JSON file.
+2. **Configure the Data Source:** Ensure InfluxDB is set up as a data source with the appropriate database and credentials.
+3. **MQTT Data Pipeline:** Verify that MQTT messages from Codesys are correctly logged into InfluxDB.
 
-### 1. CODESYS
+## Dashboard Panels
+- **OEE Gauge:** Real-time OEE percentage with color-coded thresholds.
+- **Quality Gauge:** Displays the mean quality value from `oee_data`.
+- **Availability Gauge:** Visualizes machine availability.
+- **Performance Gauge:** Shows production performance.
+- **Machine State Timeline:** Displays a state timeline (Running/Stopped) with color-coded statuses.
+- **Product Weight Chart:** Displays historical trends of product weight.
 
-- **MQTT Configuration**: Set up the MQTT client in CODESYS to publish data to a specified topic.
-- **Sample Code**: Available in the current repository.
+## Usage Notes
+- The dashboard updates automatically every minute.
+- Threshold colors are configured based on standard KPIs.
+- Data grouping uses the `time($__interval)` setting from Grafana.
 
-### 2. Node-RED
-
-- **Installation**: Follow the [official getting started guide](https://nodered.org/docs/getting-started/).
-- **Importing Flows**: Import the flow from the `flows.json` file available in the repository.
-- **MQTT Configuration**: Configure the MQTT node to subscribe to the topic used by CODESYS.
-- **Data Processing**: Add nodes to parse JSON data and store it in InfluxDB.
-
-### 3. InfluxDB
-
-- **Installation**: Download and install InfluxDB from the [official site](https://docs.influxdata.com/influxdb/latest/install/).
-- **Configuration**: Create a database where Node-RED will store the data.
-
-### 4. Grafana
-
-- **Installation**: Follow the [official installation guide](https://grafana.com/docs/grafana/latest/installation/).
-- **Adding Data Source**: Configure Grafana to use the InfluxDB database.
-- **Importing Dashboard**: Import the dashboard from the [grafanamqtt](https://github.com/controlbytePL/grafanamqtt) repository.
-
-## Running on Windows
-
-1. **Node-RED**: Open the command prompt and run `node-red` to start the environment.
-2. **Mosquitto Broker**: Start the Mosquitto service.
-3. **InfluxDB**: Start the InfluxDB service.
-
-## Notes
-
-- Ensure all services are running and properly configured before starting.
-- Adjust configurations as needed, especially IP addresses, ports, and MQTT topics.
-
-## Repository Links
-
-- [MQTT-INFLUXDB-CODESYS-GRAFANA](https://github.com/controlbytePL/MQTT-INFLUXDB-CODESYS-GRAFANA)
-- [grafanamqtt](https://github.com/controlbytePL/grafanamqtt)
+## Example
+![Dashboard Preview](https://kursy.controlbyte.pl/wp-content/uploads/2025/02/2025-02-18_07h05_43-8k9t8y8.png)
 
 ## License
+This project is licensed under the MIT License.
 
-This project is licensed under the MIT License. 
