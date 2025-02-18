@@ -22,29 +22,71 @@
   "links": [],
   "panels": [
     {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "eecqp5jgr5k3ke"
+      },
       "fieldConfig": {
-        "defaults": {},
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": []
+        },
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
+        "h": 9,
         "w": 5,
         "x": 0,
         "y": 0
       },
-      "id": 9,
+      "id": 10,
       "options": {
-        "code": {
-          "language": "plaintext",
-          "showLineNumbers": false,
-          "showMiniMap": false
+        "displayLabels": [
+          "name",
+          "percent"
+        ],
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true,
+          "values": [
+            "percent"
+          ]
         },
-        "content": "<img src=\"https://kursy.controlbyte.pl/wp-content/uploads/2025/02/2025-02-18_07h05_43-8k9t8y8.png\"/>",
-        "mode": "html"
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
       },
       "pluginVersion": "11.5.1",
-      "title": "Packaging machine",
-      "type": "text"
+      "targets": [
+        {
+          "query": "SELECT mean(\"goodParts\") AS \"Good Parts\", mean(\"badParts\") AS \"Bad Parts\"\nFROM \"oee_data\"\nWHERE $timeFilter\nGROUP BY time($__interval) fill(previous)\n",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series"
+        }
+      ],
+      "title": "GoodParts / Bad Parts",
+      "type": "piechart"
     },
     {
       "datasource": {
@@ -424,29 +466,28 @@
       "type": "histogram"
     },
     {
-      "description": "",
       "fieldConfig": {
         "defaults": {},
         "overrides": []
       },
       "gridPos": {
-        "h": 11,
+        "h": 9,
         "w": 5,
         "x": 0,
-        "y": 7
+        "y": 9
       },
-      "id": 8,
+      "id": 9,
       "options": {
         "code": {
           "language": "plaintext",
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "<h2>🏭 Industrial Machine </h2>\n<p><strong>Machine Type:</strong> Automated Production Line</p>\n\n<p><strong>Key Metrics:</strong></p>\n<ul>\n  <li>📊 OEE (Overall Equipment Effectiveness)</li>\n  <li>⚙️ Machine State (Running/Stopped)</li>\n  <li>📦 Production Quality (Good vs. Bad Parts)</li>\n  <li>⚖️ Product Weight</li>\n</ul>\n\n<p>Find out more on <a href=\"https://controlbyte.tech/\" target=\"_blank\">ControlByte website</a>.</p>",
+        "content": "<img src=\"https://kursy.controlbyte.pl/wp-content/uploads/2025/02/2025-02-18_07h05_43-8k9t8y8.png\"/>",
         "mode": "html"
       },
       "pluginVersion": "11.5.1",
-      "title": "MQTT Data from an industrial machine",
+      "title": "Packaging machine",
       "type": "text"
     },
     {
@@ -545,6 +586,32 @@
       "type": "state-timeline"
     },
     {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 5,
+        "x": 0,
+        "y": 18
+      },
+      "id": 8,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<h2>🏭 Industrial Machine </h2>\n<p><strong>Machine Type:</strong> Automated Production Line</p>\n\n<p><strong>Key Metrics:</strong></p>\n<ul>\n  <li>📊 OEE (Overall Equipment Effectiveness)</li>\n  <li>⚙️ Machine State (Running/Stopped)</li>\n  <li>📦 Production Quality (Good vs. Bad Parts)</li>\n  <li>⚖️ Product Weight</li>\n</ul>\n\n<p>Find out more on <a href=\"https://controlbyte.tech/\" target=\"_blank\">ControlByte website</a>.</p>",
+        "mode": "html"
+      },
+      "pluginVersion": "11.5.1",
+      "title": "MQTT Data from an industrial machine",
+      "type": "text"
+    },
+    {
       "datasource": {
         "type": "influxdb",
         "uid": "eecqp5jgr5k3ke"
@@ -601,9 +668,9 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
-        "w": 24,
-        "x": 0,
+        "h": 8,
+        "w": 19,
+        "x": 5,
         "y": 18
       },
       "id": 6,
@@ -641,13 +708,13 @@
     "list": []
   },
   "time": {
-    "from": "now-5m",
+    "from": "now-6h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "browser",
   "title": "MQTT Codesys OEE Data",
   "uid": "fedcfl1hba3nkd",
-  "version": 11,
+  "version": 12,
   "weekStart": ""
 }
