@@ -12,7 +12,7 @@ This project provides a Grafana dashboard titled **"MQTT Codesys OEE Data"**, de
 - **Product Weight:** Displays variations in product weight over time.
 
 ## Dashboard Preview
-![Dashboard Preview](image.png)
+![Dashboard Preview](https://kursy.controlbyte.pl/wp-content/uploads/2025/02/image-35-ycd622i.png)
 
 ## Data Source
 - **Database:** InfluxDB (Time-series database)
