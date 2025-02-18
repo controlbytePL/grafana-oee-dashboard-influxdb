@@ -17,7 +17,7 @@ This project demonstrates how to integrate the CODESYS development environment w
 ### 1. CODESYS
 
 - **MQTT Configuration**: Set up the MQTT client in CODESYS to publish data to a specified topic.
-- **Sample Code**: Available in the repository [MQTT-INFLUXDB-CODESYS-GRAFANA](https://github.com/controlbytePL/MQTT-INFLUXDB-CODESYS-GRAFANA).
+- **Sample Code**: Available in current repository
 
 ### 2. Node-RED
 
